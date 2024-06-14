@@ -34,3 +34,20 @@ export const viewAllDeliverGuy = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const deleteDeliveryGuy = async (req: Request, res: Response) => {
+  try {
+    const { Id } = req.params;
+    const getD = await deliveryModel.findByIdAndDelete(Id);
+    res.status(200).json({
+      message: "DeliveryGuy Deleted",
+      data: getD,
+      status: 200,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Error Occured!",
+      data: 400,
+    });
+  }
+};

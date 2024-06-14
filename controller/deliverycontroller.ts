@@ -18,3 +18,19 @@ export const createDeliveryGuy = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const viewAllDeliverGuy = async (req: Request, res: Response) => {
+  try {
+    const getD = await deliveryModel.find();
+    res.status(200).json({
+      messgage: "Users List",
+      data: getD,
+      status: 200,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "Error Occured!",
+      status: 400,
+    });
+  }
+};

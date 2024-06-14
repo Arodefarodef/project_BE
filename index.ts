@@ -11,9 +11,10 @@ app.use(cors({ origin: "*"}));
 
 
 
+
 const server: Server<typeof IncomingMessage, typeof ServerResponse> =
  app.listen(PORT, () => {
-    console.log()
+    console.log("Db connected")
  });
 
 process.on("uncaughtException", (error: Error) => {

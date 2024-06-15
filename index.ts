@@ -9,9 +9,12 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors({ origin: "*" }));
 
+mainApp(app);
+
 const server: Server<typeof IncomingMessage, typeof ServerResponse> =
   app.listen(PORT, () => {
-    console.log("Db connected");
+    console.log();
+    dbConfig();
   });
 
 process.on("uncaughtException", (error: Error) => {
@@ -25,3 +28,11 @@ process.on("unhandledRejection", (reason: any) => {
     process.exit(1);
   });
 });
+function mainApp(app: express.Application) {
+  throw new Error("Function not implemented.");
+}
+
+function dbConfig() {
+  throw new Error("Function not implemented.");
+}
+

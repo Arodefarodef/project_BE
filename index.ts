@@ -35,4 +35,3 @@ function mainApp(app: express.Application) {
 function dbConfig() {
   throw new Error("Function not implemented.");
 }
-

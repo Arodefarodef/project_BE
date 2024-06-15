@@ -1,8 +1,6 @@
 import cors from "cors";
 import express, { Application } from "express";
 import { IncomingMessage, ServerResponse, Server } from "node:http";
-import {mainApp} from "./mainapp";
-import {dbconfig} from "./utils/dbconfig";
 
 const PORT: number = 3354;
 
@@ -16,7 +14,7 @@ mainApp(app);
 const server: Server<typeof IncomingMessage, typeof ServerResponse> =
   app.listen(PORT, () => {
     console.log();
-    dbconfig();
+    dbConfig();
   });
 
 process.on("uncaughtException", (error: Error) => {
@@ -30,4 +28,11 @@ process.on("unhandledRejection", (reason: any) => {
     process.exit(1);
   });
 });
+function mainApp(app: express.Application) {
+  throw new Error("Function not implemented.");
+}
+
+function dbConfig() {
+  throw new Error("Function not implemented.");
+}
 

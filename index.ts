@@ -30,10 +30,3 @@ process.on("unhandledRejection", (reason: any) => {
     process.exit(1);
   });
 });
-function mainApp(app: express.Application) {
-  throw new Error("Function not implemented.");
-}
-
-function dbConfig() {
-  throw new Error("Function not implemented.");
-}

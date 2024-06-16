@@ -70,7 +70,7 @@ export const viewOne = async (req: Request, res: Response) => {
 
 export const viewAll = async (req: Request, res: Response) => {
   try {
-    const getD = await adminModel.find();
+    const getD = await deliverymodel.find();
     res.status(200).json({
       message: "All Users",
       status: 200,

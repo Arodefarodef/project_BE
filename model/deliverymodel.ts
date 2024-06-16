@@ -1,7 +1,9 @@
 import { Schema, Types, model } from "mongoose";
-import { ideliveryData } from "../utils/types";
+import { iDeliveryData } from "../utils/deliveryinter";
 
-const deliverymodel = new Schema<ideliveryData>(
+// interface iDeliveryData extends iDelivery, Document {}
+
+const deliverymodel = new Schema<iDeliveryData>(
   {
     fullName: {
       type: String,

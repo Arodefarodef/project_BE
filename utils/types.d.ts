@@ -1,13 +1,8 @@
-import { Document } from "mongoose";
-
-export interface idelivery {
-    fullName: string;
-    userame: string;
-    password: string;
-    email: string;
-    address: string;
-    phonenumber: string;
-    images: Array<{}>;
+export interface iAdmin {
+  Fname: string;
+  Lname: string;
+  email: string;
+  password: string;
+  phone: string;
+  verify: boolean;
 }
-
-export interface ideliveryData extends idelivery, Document {}

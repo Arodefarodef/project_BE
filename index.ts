@@ -1,6 +1,8 @@
 import cors from "cors";
 import express, { Application } from "express";
 import { IncomingMessage, ServerResponse, Server } from "node:http";
+import { mainApp } from "./mainapp";
+import { dbconfig } from "./utils/dbconfig";
 
 const PORT: number = 3354;
 
@@ -14,7 +16,7 @@ mainApp(app);
 const server: Server<typeof IncomingMessage, typeof ServerResponse> =
   app.listen(PORT, () => {
     console.log();
-    dbConfig();
+    dbconfig();
   });
 
 process.on("uncaughtException", (error: Error) => {

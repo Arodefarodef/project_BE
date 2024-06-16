@@ -2,7 +2,7 @@ import { connect } from "mongoose";
 
 export const dbconfig = async () => {
   try {
-    await connect().then(() => {
+    await connect(process.env.URL).then(() => {
       console.log("connected");
     });
   } catch (error) {

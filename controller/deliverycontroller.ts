@@ -4,7 +4,7 @@ import deliveryModel from "../model/deliverymodel";
 export const createDeliveryGuy = async (req: Request, res: Response) => {
   try {
     const { FullName, email, phone } = req.body;
-    const getD = await deliveryModel.create({ name, email, phone });
+    const getD = await deliveryModel.create({ FullName, email, phone });
     res.status(200).json({
       message: "Delivery Guy Created!",
       status: 200,

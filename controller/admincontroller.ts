@@ -50,3 +50,41 @@ export const verifyUser = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const signinUser = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    const userExist = await adminModel.findOne({ email });
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(password, salt);
+    if (userExist) {
+      if (userExist.verify) {
+        const passCheck = await bcrypt.compare(password, hashed);
+        if (passCheck) {
+          res.status(200).json({
+            message: "Logged in Successfully",
+            data: userExist,
+            status: 200,
+          });
+        } else {
+          res.status(400).json({
+            message: "Password Incorrect",
+            status: 400,
+          });
+        }
+      } else {
+        res.status(400).json({
+          message: "User not Verified yet",
+          status: 400,
+        });
+      }
+    } else {
+      res.status(400).json({
+        message: "User doesn't exist",
+        status: 400,
+      });
+    }
+  } catch (error) {
+    res.status(400);
+  }
+};

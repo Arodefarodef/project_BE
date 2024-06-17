@@ -1,32 +1,14 @@
+import express from "express";
 import cors from "cors";
-import express, { Application } from "express";
-import { IncomingMessage, ServerResponse, Server } from "node:http";
-import { mainApp } from "./mainapp";
-import { dbconfig } from "./utils/dbconfig";
+import dotenv from "dotenv";
+import { dbconfig } from "./utils/dbConfig";
+import { mainApp } from "./mainApp";
+dotenv.config();
 
-const PORT: number = 3354;
-
-const app: Application = express();
-
+const app = express();
+app.use(cors());
 app.use(express.json());
-app.use(cors({ origin: "*" }));
-
 mainApp(app);
-
-const server: Server<typeof IncomingMessage, typeof ServerResponse> =
-  app.listen(PORT, () => {
-    console.log();
-    dbconfig();
-  });
-
-process.on("uncaughtException", (error: Error) => {
-  console.log("uncaughtException: ", error);
-
-  process.exit(1);
-});
-process.on("unhandledRejection", (reason: any) => {
-  console.log("unhandledRejection: ", reason);
-  server.close(() => {
-    process.exit(1);
-  });
+app.listen(parseInt(process.env.PORT!), () => {
+  dbconfig();
 });
